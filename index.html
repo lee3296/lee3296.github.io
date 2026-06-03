@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Seohyun Lee — Researcher</title>
+<meta name="description" content="Seohyun Lee — M.S. researcher in Electrical & Computer Engineering at Purdue University, working on federated learning, foundation models, and world models." />
+
+<!-- Fonts: Fraunces (display serif) + IBM Plex Sans (body) + IBM Plex Mono (labels) -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<style>
+  :root{
+    --paper:#F6F3EC;
+    --paper-2:#FCFAF5;
+    --card:#FFFFFF;
+    --ink:#17191E;
+    --ink-soft:#41454E;
+    --muted:#83878F;
+    --line:#E2DDD1;
+    --line-strong:#CFC8B8;
+    --accent:#1F4D6B;
+    --accent-hover:#2A6791;
+    --accent-soft:#EBF0F2;
+    --maxw:1080px;
+    --radius:14px;
+    --shadow:0 1px 2px rgba(23,25,30,.04), 0 8px 30px rgba(23,25,30,.06);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    font-size:16px;
+    /* subtle paper grain */
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  }
+  a{color:inherit;text-decoration:none;}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+
+  .mono{font-family:"IBM Plex Mono",monospace;}
+
+  /* ---------- Nav ---------- */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(246,243,236,.82);
+    backdrop-filter:saturate(140%) blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:var(--maxw);margin:0 auto;padding:14px 28px;
+    display:flex;align-items:center;justify-content:space-between;gap:20px;
+  }
+  .nav-name{
+    font-family:"Fraunces",serif;font-weight:600;font-size:1.05rem;letter-spacing:-.01em;
+  }
+  .nav-name span{color:var(--accent);}
+  .nav-links{display:flex;gap:26px;}
+  .nav-links a{
+    font-size:.82rem;letter-spacing:.02em;color:var(--ink-soft);
+    position:relative;padding:2px 0;transition:color .2s ease;
+  }
+  .nav-links a::after{
+    content:"";position:absolute;left:0;bottom:-2px;height:1px;width:0;
+    background:var(--accent);transition:width .25s ease;
+  }
+  .nav-links a:hover{color:var(--accent);}
+  .nav-links a:hover::after{width:100%;}
+  @media(max-width:720px){ .nav-links{display:none;} }
+
+  /* ---------- Hero ---------- */
+  header.hero{padding:84px 0 64px;border-bottom:1px solid var(--line);}
+  .hero-grid{
+    display:grid;grid-template-columns:1fr 280px;gap:56px;align-items:center;
+  }
+  .eyebrow{
+    font-family:"IBM Plex Mono",monospace;font-size:.74rem;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--accent);margin-bottom:18px;
+  }
+  h1.name{
+    font-family:"Fraunces",serif;font-weight:500;
+    font-size:clamp(2.6rem,6vw,4.1rem);line-height:1.02;letter-spacing:-.02em;
+    margin:0 0 6px;
+  }
+  .hero .role{
+    font-size:1.06rem;color:var(--ink-soft);margin:0 0 22px;max-width:34ch;
+  }
+  .hero .role b{color:var(--ink);font-weight:600;}
+  .hero p.bio{font-size:1.02rem;color:var(--ink-soft);max-width:54ch;margin:0 0 26px;}
+  .hero .bio b{color:var(--ink);font-weight:600;}
+
+  .contacts{display:flex;flex-wrap:wrap;gap:10px;}
+  .contacts a{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:.86rem;padding:9px 15px;border:1px solid var(--line-strong);
+    border-radius:999px;background:var(--paper-2);
+    transition:all .2s ease;
+  }
+  .contacts a:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px);}
+  .contacts svg{width:15px;height:15px;}
+
+  .portrait{
+    width:280px;height:300px;border-radius:var(--radius);overflow:hidden;
+    box-shadow:var(--shadow);border:1px solid var(--line);
+    position:relative;
+  }
+  .portrait::after{
+    content:"";position:absolute;inset:0;border-radius:var(--radius);
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,.4);
+  }
+  .portrait img{width:100%;height:100%;object-fit:cover;display:block;
+    filter:saturate(1.02);}
+
+  @media(max-width:760px){
+    header.hero{padding:52px 0 44px;}
+    .hero-grid{grid-template-columns:1fr;gap:34px;}
+    .portrait{width:170px;height:182px;order:-1;}
+  }
+
+  /* ---------- Sections ---------- */
+  section{padding:62px 0;border-bottom:1px solid var(--line);}
+  .sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:36px;}
+  .sec-num{font-family:"IBM Plex Mono",monospace;font-size:.78rem;color:var(--accent);
+    letter-spacing:.1em;padding-top:6px;}
+  h2{
+    font-family:"Fraunces",serif;font-weight:500;font-size:clamp(1.7rem,3.4vw,2.2rem);
+    letter-spacing:-.02em;margin:0;
+  }
+
+  /* ---------- Publications ---------- */
+  .pub{
+    display:grid;grid-template-columns:30px 1fr;gap:18px;
+    padding:26px 0;border-top:1px solid var(--line);
+  }
+  .pub:first-of-type{border-top:none;}
+  .pub-idx{font-family:"IBM Plex Mono",monospace;color:var(--muted);font-size:.9rem;padding-top:3px;}
+  .pub-title{
+    font-family:"Fraunces",serif;font-size:1.24rem;font-weight:500;line-height:1.3;
+    letter-spacing:-.01em;margin:0 0 8px;color:var(--ink);
+  }
+  .pub-authors{font-size:.93rem;color:var(--ink-soft);margin:0 0 4px;}
+  .pub-authors .me{color:var(--accent);font-weight:600;}
+  .pub-venue{font-size:.9rem;color:var(--muted);margin:0 0 14px;}
+  .pub-venue em{font-style:italic;color:var(--ink-soft);}
+  .badge{
+    display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:.68rem;
+    letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:6px;
+    margin-left:8px;vertical-align:middle;border:1px solid var(--line-strong);
+  }
+  .badge.review{background:#FBF3E6;border-color:#E9D7B8;color:#946A1E;}
+  .badge.pub{background:var(--accent-soft);border-color:#CFE0E6;color:var(--accent);}
+  .pub-links{display:flex;gap:10px;flex-wrap:wrap;}
+  .pub-links a{
+    font-family:"IBM Plex Mono",monospace;font-size:.78rem;
+    padding:6px 12px;border:1px solid var(--line-strong);border-radius:8px;
+    background:var(--paper-2);transition:all .2s ease;
+  }
+  .pub-links a:hover{border-color:var(--accent);color:var(--accent);background:#fff;}
+
+  /* ---------- Timeline (experience / teaching) ---------- */
+  .item{
+    display:grid;grid-template-columns:200px 1fr;gap:28px;
+    padding:24px 0;border-top:1px solid var(--line);
+  }
+  .item:first-of-type{border-top:none;}
+  .item-meta .when{font-family:"IBM Plex Mono",monospace;font-size:.78rem;color:var(--accent);
+    letter-spacing:.03em;}
+  .item-meta .where{font-size:.86rem;color:var(--muted);margin-top:4px;}
+  .item h3{font-size:1.05rem;font-weight:600;margin:0 0 4px;}
+  .item .org{font-size:.92rem;color:var(--ink-soft);margin:0 0 10px;}
+  .item .desc{font-size:.98rem;color:var(--ink-soft);margin:0 0 10px;max-width:62ch;}
+  .item .desc:last-child{margin-bottom:0;}
+  .item ul{margin:0;padding-left:18px;color:var(--ink-soft);font-size:.95rem;}
+  .item ul li{margin-bottom:6px;}
+  .item ul li::marker{color:var(--accent);}
+  @media(max-width:680px){ .item{grid-template-columns:1fr;gap:8px;} }
+
+  /* ---------- Education ---------- */
+  .edu{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  .edu-card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:24px;box-shadow:var(--shadow);
+  }
+  .edu-card .deg{font-family:"Fraunces",serif;font-size:1.15rem;font-weight:500;margin:0 0 4px;}
+  .edu-card .sch{font-size:.95rem;color:var(--ink-soft);margin:0 0 12px;}
+  .edu-card .meta{font-family:"IBM Plex Mono",monospace;font-size:.78rem;color:var(--muted);
+    display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;}
+  @media(max-width:680px){ .edu{grid-template-columns:1fr;} }
+
+  /* ---------- Skills ---------- */
+  .skill-group{margin-bottom:22px;}
+  .skill-group h4{font-family:"IBM Plex Mono",monospace;font-size:.74rem;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--accent);margin:0 0 12px;}
+  .tags{display:flex;flex-wrap:wrap;gap:8px;}
+  .tag{
+    font-size:.82rem;padding:5px 12px;border-radius:999px;
+    background:var(--paper-2);border:1px solid var(--line);color:var(--ink-soft);
+    transition:all .18s ease;
+  }
+  .tag:hover{border-color:var(--accent);color:var(--accent);}
+
+  /* ---------- Service / two-col list ---------- */
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:40px;}
+  .mini h4{font-family:"IBM Plex Mono",monospace;font-size:.74rem;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--accent);margin:0 0 14px;}
+  .mini ul{margin:0;padding-left:18px;color:var(--ink-soft);font-size:.95rem;}
+  .mini ul li{margin-bottom:8px;}
+  .mini ul li::marker{color:var(--accent);}
+  @media(max-width:680px){ .two-col{grid-template-columns:1fr;gap:28px;} }
+
+  /* ---------- Footer ---------- */
+  footer{padding:48px 0 64px;text-align:center;}
+  footer .f-name{font-family:"Fraunces",serif;font-size:1.2rem;margin-bottom:6px;}
+  footer p{color:var(--muted);font-size:.85rem;margin:4px 0;}
+  footer .f-links{display:flex;justify-content:center;gap:18px;margin-top:14px;}
+  footer .f-links a{font-size:.85rem;color:var(--ink-soft);transition:color .2s;}
+  footer .f-links a:hover{color:var(--accent);}
+
+  /* ---------- Reveal animation ---------- */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease;}
+  .reveal.in{opacity:1;transform:none;}
+  @media(prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none;}
+    html{scroll-behavior:auto;}
+  }
+  /* staggered hero load */
+  .hero .anim{opacity:0;transform:translateY(14px);animation:rise .8s cubic-bezier(.2,.7,.2,1) forwards;}
+  .hero .anim:nth-child(1){animation-delay:.05s;}
+  .eyebrow.anim{animation-delay:.05s;}
+  h1.name.anim{animation-delay:.13s;}
+  .role.anim{animation-delay:.21s;}
+  .bio.anim{animation-delay:.29s;}
+  .contacts.anim{animation-delay:.37s;}
+  .portrait.anim{animation-delay:.30s;}
+  @keyframes rise{to{opacity:1;transform:none;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#top" class="nav-name">Seohyun <span>Lee</span></a>
+    <div class="nav-links">
+      <a href="#research">Research</a>
+      <a href="#publications">Publications</a>
+      <a href="#experience">Experience</a>
+      <a href="#teaching">Teaching</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<a id="top"></a>
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow anim">Graduate Researcher</div>
+        <h1 class="name anim">Seohyun <span style="color:var(--accent)">Lee</span></h1>
+        <p class="role anim"><b>M.S. Researcher</b>, Elmore Family School of Electrical &amp; Computer Engineering, Purdue University</p>
+        <p class="bio anim">
+          Hello! I am an <b>M.S. researcher at the ION Lab</b> in Purdue's Elmore Family School of ECE
+          (Electrical and Computer Engineering), advised by Prof. Christopher G. Brinton.
+        </p>
+        <div class="contacts anim">
+          <a href="mailto:lee3296@purdue.edu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+            lee3296@purdue.edu
+          </a>
+          <a href="https://scholar.google.com/citations?user=N65AJrwAAAAJ&hl=en" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M5.85 4.6 12 9.04 18.15 4.6 12 .89 5.85 4.6zM12 10.2 4.5 5.5v6.3L12 16.5l7.5-4.7V5.5L12 10.2zm0 7.5L4.5 13v3.5L12 21l7.5-4.5V13L12 17.7z"/></svg>
+            Google Scholar
+          </a>
+          <a href="https://github.com/lee3296" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49l-.01-1.7c-2.78.62-3.37-1.37-3.37-1.37-.46-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.89 1.57 2.34 1.12 2.91.86.09-.66.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05a9.3 9.3 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.06.36.32.68.95.68 1.92l-.01 2.85c0 .27.18.6.69.49A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2z"/></svg>
+            GitHub
+          </a>
+          <a href="https://www.linkedin.com/in/seohyun-lee-886905174/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zM8.34 18H5.67V9.75h2.67V18zM7 8.57a1.55 1.55 0 1 1 0-3.1 1.55 1.55 0 0 1 0 3.1zM18.34 18h-2.67v-4.02c0-.96-.02-2.2-1.34-2.2-1.34 0-1.55 1.05-1.55 2.13V18h-2.67V9.75h2.56v1.13h.04c.36-.68 1.23-1.4 2.53-1.4 2.71 0 3.21 1.78 3.21 4.1V18z"/></svg>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+      <div class="portrait anim">
+        <img src="headshot.png" alt="Portrait of Seohyun Lee" />
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ RESEARCH ============ -->
+<section id="research">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">01</span><h2>Research</h2></div>
+    <div class="reveal">
+      <p style="max-width:64ch;color:var(--ink-soft);font-size:1.04rem;margin:0 0 26px;">
+        My work currently centers on <b style="color:var(--ink)">fair and trustworthy machine learning</b> and
+        <b style="color:var(--ink)">self-learning models</b>, with the most experience within a
+        <b style="color:var(--ink)">Federated Learning (FL)</b> setting, where models are trained across many
+        distributed clients without sharing their raw data. I'm interested in how these systems can stay
+        <b style="color:var(--ink)">robust and equitable</b> across clients with very different data, and in
+        <b style="color:var(--ink)">self-play and online learning</b> as a way for models to keep improving from
+        their own experience and real-time feedback.
+      </p>
+      <div class="tags">
+        <span class="tag">Federated Learning</span>
+        <span class="tag">Foundation &amp; World Models</span>
+        <span class="tag">Edge / Distributed ML</span>
+        <span class="tag">Self-Play &amp; RL</span>
+        <span class="tag">Personalization / Fairness</span>
+        <span class="tag">Adversarial Robustness</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PUBLICATIONS ============ -->
+<section id="publications">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">02</span><h2>Publications &amp; Preprints</h2></div>
+
+    <div class="reveal">
+      <div class="pub">
+        <div class="pub-idx">[1]</div>
+        <div>
+          <p class="pub-title">Self-Play Enhancement via Advantage-Weighted Refinement in Online Federated LLM Fine-Tuning with Real-Time Feedback<span class="badge review">Preprint</span></p>
+          <p class="pub-authors"><span class="me">S. Lee</span>, W. Fang, D. Han, S. Hosseinalipour, C. G. Brinton</p>
+          <p class="pub-venue"><em>arXiv preprint</em> arXiv:2605.07977, 2026</p>
+          <div class="pub-links">
+            <a href="https://arxiv.org/pdf/2605.07977" target="_blank" rel="noopener">PDF</a>
+            <a href="https://arxiv.org/abs/2605.07977" target="_blank" rel="noopener">arXiv</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-idx">[2]</div>
+        <div>
+          <p class="pub-title">TAP: Two-Stage Adaptive Personalization of Multi-Task and Multi-Modal Foundation Models in Federated Learning<span class="badge review">Preprint</span></p>
+          <p class="pub-authors"><span class="me">S. Lee</span>, W. Fang, D. Han, S. Hosseinalipour, C. G. Brinton</p>
+          <p class="pub-venue"><em>arXiv preprint</em> arXiv:2509.26524, 2026</p>
+          <div class="pub-links">
+            <a href="https://arxiv.org/pdf/2509.26524" target="_blank" rel="noopener">PDF</a>
+            <a href="https://arxiv.org/abs/2509.26524" target="_blank" rel="noopener">arXiv</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-idx">[3]</div>
+        <div>
+          <p class="pub-title">Cooperative Decentralized Backdoor Attacks on Vertical Federated Learning<span class="badge pub">IEEE/ACM ToN</span></p>
+          <p class="pub-authors"><span class="me">S. Lee</span>, W. Fang, A. B. Das, S. Hosseinalipour, D. J. Love, C. G. Brinton</p>
+          <p class="pub-venue"><em>IEEE/ACM Transactions on Networking</em>, 2025</p>
+          <div class="pub-links">
+            <a href="https://arxiv.org/pdf/2501.09320" target="_blank" rel="noopener">PDF</a>
+            <a href="https://arxiv.org/abs/2501.09320" target="_blank" rel="noopener">arXiv</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-idx">[4]</div>
+        <div>
+          <p class="pub-title">Smart Information Exchange for Unsupervised Federated Learning via Reinforcement Learning<span class="badge pub">IEEE ICC 2024</span></p>
+          <p class="pub-authors"><span class="me">S. Lee</span>, A. B. Das, S. Wagle, C. G. Brinton</p>
+          <p class="pub-venue"><em>ICC 2024 — IEEE International Conference on Communications</em>, pp. 3494–3499</p>
+          <div class="pub-links">
+            <a href="https://arxiv.org/pdf/2402.09629" target="_blank" rel="noopener">PDF</a>
+            <a href="https://arxiv.org/abs/2402.09629" target="_blank" rel="noopener">arXiv</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-idx">[5]</div>
+        <div>
+          <p class="pub-title">Detecting and Mitigating Backdoor Attacks in OTA-FL Systems: A Two-Stage Robust Aggregation Scheme<span class="badge review">Preprint</span></p>
+          <p class="pub-authors">X. Ma, <span class="me">S. Lee</span>, T. Kim, C. G. Brinton</p>
+          <p class="pub-venue"><em>arXiv preprint</em> arXiv:2605.19253, 2026</p>
+          <div class="pub-links">
+            <a href="https://arxiv.org/pdf/2605.19253" target="_blank" rel="noopener">PDF</a>
+            <a href="https://arxiv.org/abs/2605.19253" target="_blank" rel="noopener">arXiv</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXPERIENCE ============ -->
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">03</span><h2>Research Experience</h2></div>
+
+    <div class="item reveal">
+      <div class="item-meta">
+        <div class="when">May 2025 — Present</div>
+        <div class="where">West Lafayette, IN</div>
+      </div>
+      <div>
+        <h3>Graduate Research Assistant</h3>
+        <p class="org">ION Lab · Elmore Family School of Electrical &amp; Computer Engineering, Purdue University</p>
+        <p class="desc">
+          As a fully-funded M.S. researcher, I design algorithms for foundation and world models in Federated
+          Learning. Right now I'm most excited about personalized foundation models that work across multiple
+          modalities and tasks, and about online self-play learning, directions where our methods have been
+          beating the state of the art by roughly 4–8%.
+        </p>
+      </div>
+    </div>
+
+    <div class="item reveal">
+      <div class="item-meta">
+        <div class="when">May 2023 — May 2025</div>
+        <div class="where">West Lafayette, IN</div>
+      </div>
+      <div>
+        <h3>Undergraduate Researcher</h3>
+        <p class="org">ION Lab · Elmore Family School of Electrical &amp; Computer Engineering, Purdue University</p>
+        <p class="desc">
+          I joined the lab as an undergraduate, working alongside PhD and postdoctoral researchers on edge
+          learning. My focus was on two of the harder problems in Federated Learning: handling data
+          heterogeneity across clients and adversarial backdoor attacks, where the approaches I
+          develop outperformed the prior state of the art by 5–30%.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TEACHING ============ -->
+<section id="teaching">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">04</span><h2>Teaching</h2></div>
+
+    <div class="item reveal">
+      <div class="item-meta">
+        <div class="when">Aug 2023 — May 2025</div>
+        <div class="where">300 students · TDM 201/202</div>
+      </div>
+      <div>
+        <h3>Teaching Assistant — The Data Mine Seminar II</h3>
+        <p class="org">Purdue University</p>
+        <p class="desc">
+          I helped run this data-science seminar for a class of around 300 students, covering Python, R, bash,
+          and SQL, with topics ranging from plotting and NumPy/Pandas to filtering data and exploring it from the command
+          line. Week to week, I held office hours, wrote up assignment solutions, and graded coursework, and I
+          stepped in to support the 900-student intro version (TDM 101) when the staff needed extra hands.
+        </p>
+      </div>
+    </div>
+
+    <div class="item reveal">
+      <div class="item-meta">
+        <div class="when">Aug 2022 — Dec 2022</div>
+        <div class="where">400 students · CS 240</div>
+      </div>
+      <div>
+        <h3>Teaching Assistant — Programming in C</h3>
+        <p class="org">Purdue University</p>
+        <p class="desc">
+          This was an introductory C course for about 400 students, covering the fundamentals: file I/O, memory
+          layout and management, and pointers. In addition, guidance for practical tools like SSH and Vim. I ran two weekly lab
+          sessions of 30–40 students each, wrote and graded the post-lab quizzes, and proctored exams.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EDUCATION ============ -->
+<section id="education">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">05</span><h2>Education</h2></div>
+    <div class="edu reveal">
+      <div class="edu-card">
+        <p class="deg">M.S., Electrical &amp; Computer Engineering</p>
+        <p class="sch">Purdue University, West Lafayette, IN</p>
+        <div class="meta"><span>Aug 2025 — May 2027</span><span>GPA 3.90 / 4.00</span></div>
+      </div>
+      <div class="edu-card">
+        <p class="deg">B.S. Computer Science · B.A. Minor, Japanese</p>
+        <p class="sch">Purdue University · John Martinson Honors College</p>
+        <div class="meta"><span>Aug 2021 — May 2025</span><span>GPA 3.90 / 4.00</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SKILLS ============ -->
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">06</span><h2>Technical Skills</h2></div>
+    <div class="reveal">
+      <div class="skill-group">
+        <h4>Languages</h4>
+        <div class="tags">
+          <span class="tag">Python</span><span class="tag">Java</span><span class="tag">C / C++</span>
+          <span class="tag">R</span><span class="tag">JavaScript</span><span class="tag">SQL</span>
+          <span class="tag">MongoDB</span><span class="tag">Neo4j</span><span class="tag">ARM</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>ML Frameworks &amp; Libraries</h4>
+        <div class="tags">
+          <span class="tag">PyTorch</span><span class="tag">TensorFlow</span><span class="tag">Keras</span>
+          <span class="tag">scikit-learn</span><span class="tag">HuggingFace</span><span class="tag">OpenAI Gymnasium</span>
+          <span class="tag">NumPy</span><span class="tag">Pandas</span><span class="tag">OpenCV</span>
+          <span class="tag">Matplotlib</span><span class="tag">seaborn</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Web &amp; Data</h4>
+        <div class="tags">
+          <span class="tag">React</span><span class="tag">Node.js</span><span class="tag">MySQL</span>
+          <span class="tag">PostgreSQL</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h4>Tools &amp; Languages Spoken</h4>
+        <div class="tags">
+          <span class="tag">Git</span><span class="tag">Vim</span><span class="tag">VS Code</span>
+          <span class="tag">Google Colab</span>
+          <span class="tag">English</span><span class="tag">Korean</span><span class="tag">Japanese</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICE & PRESENTATIONS ============ -->
+<section id="service">
+  <div class="wrap">
+    <div class="sec-head reveal"><span class="sec-num">07</span><h2>Service &amp; Talks</h2></div>
+    <div class="two-col reveal">
+      <div class="mini">
+        <h4>Reviewer Service</h4>
+        <ul>
+          <li>IEEE/ACM Transactions on Networking (ToN)</li>
+          <li>Neural Information Processing Systems (NeurIPS)</li>
+        </ul>
+      </div>
+      <div class="mini">
+        <h4>Invited Presentations</h4>
+        <ul>
+          <li>“Smart Information Exchange for Unsupervised Federated Learning via Reinforcement Learning,” IEEE ICC, Denver, USA — June 11, 2024.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER / CONTACT ============ -->
+<footer id="contact">
+  <div class="wrap reveal">
+    <p class="f-name">Seohyun Lee</p>
+    <p>M.S. Researcher · Purdue ECE · ION Lab</p>
+    <div class="f-links">
+      <a href="mailto:lee3296@purdue.edu">lee3296@purdue.edu</a>
+      <a href="https://scholar.google.com/citations?user=N65AJrwAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
+      <a href="https://github.com/lee3296" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/seohyun-lee-886905174/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target);} });
+  },{threshold:0.12, rootMargin:"0px 0px -40px 0px"});
+  document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
